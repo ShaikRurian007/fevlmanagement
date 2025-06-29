@@ -1,0 +1,13 @@
+node_modules/
+.env
+.git/
+.github/
+src/
+public/
+webpack.config.js
+package.json
+package-lock.json
+deploy.sh
+.gitignore
+*.md
+tsconfig.json
