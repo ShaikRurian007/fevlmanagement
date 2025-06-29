@@ -10,20 +10,26 @@ if [ ! -d "dist" ]; then
     exit 1
 fi
 
-# Navigate to dist directory
-cd dist
+# Create temporary deployment directory
+echo "Preparing deployment..."
+rm -rf /tmp/deploy
+cp -r dist /tmp/deploy
+
+# Navigate to temporary directory
+cd /tmp/deploy
 
 # Initialize git if not already done
-if [ ! -d ".git" ]; then
-    git init
-    git remote add origin https://github.com/ShaikRurian007/fevlmanagement.git
-fi
-
-# Add all files in dist
+git init
 git add .
 git commit -m "Deploy React app to GitHub Pages"
 
-# Force push to gh-pages branch
+# Add remote and force push to gh-pages branch
+git remote add origin https://github.com/ShaikRurian007/fevlmanagement.git
 git push -f origin HEAD:gh-pages
 
+# Clean up
+cd - > /dev/null
+rm -rf /tmp/deploy
+
 echo "Deployment complete!"
+echo "Your site will be available at: https://shaikrurian007.github.io/fevlmanagement/"
