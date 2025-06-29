@@ -1,8 +1,8 @@
 #!/bin/bash
 
-# Build the project
-echo "Building the project..."
-npm run build
+# Build the project in production mode
+echo "Building the project for production..."
+NODE_ENV=production npm run build
 
 # Check if build was successful
 if [ ! -d "dist" ]; then
